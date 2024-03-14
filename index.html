@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissor Game </title>
+</head>
+<body>
+    <div class="heading">
+        <h2>Rock Paper Scissor </h2>
+    </div>
+    <div class="choices">
+        <div class="choice" id="Rock">
+            <img src="rock.png" alt="">
+        </div>
+
+        <div class="choice" id="paper">
+            <img src="paper.png" alt="">
+        </div>
+
+        <div class="choice" id="Scissor">
+            <img src="scissors.png" alt="">
+        </div>
+    </div>
+
+    <div class="count">
+        <div class="user">
+            <h1 id="user_count">0</h1>
+            <p>User</p>
+        </div>
+        <div class="comp">
+            <h1 id="comp_count">0</h1>
+            <p>Computer</p>
+        </div>
+    </div>
+
+    <div class="result">
+        <h3 id="result1">Play Game</h3>
+    </div>
+    
+
+
+
+    <script>
+        let user=0
+        let comp=0
+
+    
+        let userchoice=document.querySelectorAll('.choice')
+        let result=document.getElementById('result1')
+
+        function comp_winner(){
+            result.innerHTML="YOu Lose Computer Won The Game"
+            comp++
+            document.getElementById('comp_count').innerText=comp
+        }
+        
+        function user_winner(){
+            result.innerHTML='Congratulation You Win'
+            user++
+            document.getElementById('user_count').innerText=user
+        }
+
+        let comp_choice=()=>{
+            let arr=["Rock","paper",'Scissor']
+            let random1=Math.floor(Math.random()*3)
+            return arr[random1]
+
+        }
+
+        userchoice.forEach(function(e){
+            e.addEventListener("click",function(val){
+                
+                let user_command=e.getAttribute('id')
+                
+                let computer=comp_choice()
+
+                console.log(user_command,computer);
+
+                if (user_command===computer) {
+                    result.innerHTML="Draw The Game!" 
+                }
+
+                else if(user_command==='Rock' && computer==='paper'){
+                        comp_winner()
+                }
+
+                else if (user_command=='paper' && computer==='Scissor') {
+                    comp_winner()
+                }
+
+                else if (user_command==='Scissor' && computer==='Rock') {
+                    comp_winner()
+                }
+
+                else{
+                    user_winner()
+                }
+                
+            })
+        })
+
+         x=0
+        var x=12
+        console.log(x);
+
+     
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
